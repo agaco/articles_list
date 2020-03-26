@@ -1,9 +1,10 @@
-import React, { useState, useReducer } from 'react';
-import { Form, Input, Button, Row, Col } from 'antd';
+import React, { useReducer } from 'react';
+import { Button, Row, Col, Divider } from 'antd';
 import ServiceComponent from '../ServiceComponent';
 import AddressComponent from '../AddressComponent';
+import Total from '../Total';
 import * as constant from '../../../../constants';
-import { Wrapper } from './styled';
+import { Container } from './styled';
 
 
 
@@ -79,30 +80,44 @@ const InvoiceForm = () => {
   };
 
   return (
-    <Wrapper>
-      {
-        console.log('stte', state)
-      }
-      <div>
-        <AddressComponent onSubmit={setSellerAddress}/>
-      </div>
-      <div>
-        <AddressComponent onSubmit={setConcractorAddress}/>
-      </div>
-      <Button onClick={addService}>
-      Add Service
-      </Button>
-      {
-        state.services.map((item, index) => {
-          return (
-            <ServiceComponent key={index}
-              keyNumber={item.id}
-              onChange={(val) => setServiceItemEdit(val, item.id,)}
-              {...item}/>
-          );
-        })
-      }
-    </Wrapper>
+    <Container>
+      <Row>
+        {
+          console.log('stte', state)
+        }
+        <Col span={12}>
+          <AddressComponent onSubmit={setSellerAddress}/>
+        </Col>
+        <Col>
+          <Divider dashed />
+        </Col>
+        <Col span={12}>
+          <AddressComponent onSubmit={setConcractorAddress}/>
+        </Col>
+
+        <Col span={20}>
+          <Button onClick={addService}>
+          Add Service
+          </Button>
+          {
+            state.services.map((item, index) => {
+              return (
+                <ServiceComponent key={index}
+                  keyNumber={item.id}
+                  onChange={(val) => setServiceItemEdit(val, item.id,)}
+                  {...item}/>
+              );
+            })
+          }
+        </Col>
+        <Col>
+          <Divider dashed />
+        </Col>
+        <Col span={12} offset={3}>
+          <Total data={state.services}/>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

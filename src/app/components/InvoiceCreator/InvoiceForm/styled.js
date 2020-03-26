@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  margin-bottom: 1em;
+
+export const Container = styled.div`
+  border: 1px solid red;
 `;
 
-export {
-  Wrapper,
-};

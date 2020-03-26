@@ -5,6 +5,17 @@ import { Container, Wrapper, Sum, Label } from './styled';
 
 const ServiceComponent = ({ value, quantity, description, onChange }) => {
 
+  const onValueChange = (type, e) => {
+    const value = e.target.value == '' ? e.target.value.toFixed(2) : 0;
+
+    const data = {
+      type,
+      value: parseFloat(value),
+    };
+
+    onChange(data);
+  };
+
   const sum = quantity * value;
   return (
     <Container>
@@ -13,6 +24,7 @@ const ServiceComponent = ({ value, quantity, description, onChange }) => {
           description:
         </Label>
         <Input defaultValue={description}
+          // onChange={(e) => onValueChange('description', e)}/>
           onChange={(e) => onChange({type: 'description', 'value': e.target.value})}/>
       </Wrapper>
       <Wrapper grow='0'>
