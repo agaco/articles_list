@@ -15,8 +15,7 @@ const ServiceComponent = ({ value, quantity, description, onChange }) => {
         <Input defaultValue={description}
           onChange={(e) => onChange({type: 'description', 'value': e.target.value})}/>
       </Wrapper>
-
-      <Wrapper>
+      <Wrapper grow='0'>
         <Label>
           Value:
         </Label>
@@ -25,7 +24,7 @@ const ServiceComponent = ({ value, quantity, description, onChange }) => {
           onChange={(e) => onChange({type: 'value', 'value': e.target.value})}/>
       </Wrapper>
 
-      <Wrapper>
+      <Wrapper grow='0'>
         <Label>
           Quantity:
         </Label>

@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 10px;
   ${props => props.grow && `
     flex-grow: ${props.grow}
   `};
