@@ -1,7 +1,8 @@
 export const fullListQuery = () => (
- `{
+  `{
    articles(t: Article, limit: 20) {
      id
+     original_id
      title
      url
      tags
@@ -25,11 +26,9 @@ export const fullListQuery = () => (
  }`
 );
 
-export const singleArtQuery = (url) => (
- `{
-   article(
-    url: ${url}
-   ) {
+
+export const singleArtQuery = `query getArticle($url: String!) {
+  article(url: $url) {
      id
      original_id
      title
@@ -46,7 +45,6 @@ export const singleArtQuery = (url) => (
      body(t: HTML) {
        data
      }
-   }
- }`
-);
+  }
+ }`;
 

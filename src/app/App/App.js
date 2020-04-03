@@ -7,6 +7,7 @@ import { history } from 'store/middleware';
 import './App.css';
 import { Layout } from 'antd';
 import ArticlesList from '../pages/ArticlesList';
+import SingleArticle from '../pages/SingleArticle';
 
 function App() {
   return (
@@ -14,9 +15,8 @@ function App() {
       <ConnectedRouter history={history}>
         <Layout className='generalSettings'>
           <Switch>
-            <Route exact path='/create' component={ArticlesList} />
             <Route exact path='/' component={ArticlesList} />
-            {/*<Route path='' component={News} />*/}
+            <Route path="/article/:id" component={SingleArticle} />
           </Switch>
         </Layout>
       </ConnectedRouter>
