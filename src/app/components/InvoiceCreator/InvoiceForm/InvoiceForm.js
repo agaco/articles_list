@@ -82,9 +82,6 @@ const InvoiceForm = () => {
   return (
     <Container>
       <Row>
-        {
-          console.log('stte', state)
-        }
         <Col span={12}>
           <AddressComponent onSubmit={setSellerAddress}/>
         </Col>

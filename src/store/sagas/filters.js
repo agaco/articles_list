@@ -78,25 +78,6 @@ function* setInitialFilters() {
   }, []);
 
 
-  const data = {
-    unit: 'SKU',
-    country_id: personalInfo.countries.map(i => i.id),
-    country_name: personalInfo.countries.map(i => i.name),
-    cluster: personalInfo.clusters.map(i => i.id),
-    role: personalInfo.roles.map(i => i.code),
-    small_category: allSmallCategoriesOfUser,
-    category: allBigCategoriesOfUser,
-    volume_type: referenceData.volume_type[0].replace(' ', '_'),
-    value_type: referenceData.value_type[0].replace(' ', '_'),
-    currency: referenceData.currency_type.default.usd,
-    cpgs: allCpgs, // remove when upload??
-    customer: customers,// remove when upload??
-    brands : brands,
-    innovation_project_name: innovationName,
-    forecasting_unit: forecastingUnit, // remove when upload??
-    sku: sku_by_cpg,
-  };
-
   // eslint-disable-next-line no-unused-vars
   const stringifiedData = yield JSON.stringify(data);
 

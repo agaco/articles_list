@@ -1,17 +1,6 @@
-import news from './news';
-import auth from './auth';
-import users from './users';
-import buildingBlocks from './buildingBlocks';
-import currentPlan from './currentPlan';
-import uploadPlan from './uploadPlan';
-import pivots from './pivots';
+const type = 'LISTENER';
 
-export {
-  news,
-  auth,
-  users,
-  pivots,
-  currentPlan,
-  buildingBlocks,
-  uploadPlan,
+export const listener = {
+  GET_SOURCES_REQUEST: `${type}:_GET_SOURCES_REQUEST`,
 };
+

@@ -1,13 +1,10 @@
-import invoices from './invoices';
-import singleInvoice from './singleInvoice';
-
+import articles from './articles';
 
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 
 const rootReducer = (history) => combineReducers({
-  invoices,
-  singleInvoice,
+  articles,
   router: connectRouter(history),
 });
 

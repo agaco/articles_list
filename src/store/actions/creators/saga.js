@@ -2,7 +2,7 @@ import * as action from '../sagaActions';
 
 const authorizeUser = (code) => {
   return {
-    type: action.auth.GET_USER_DATA_REQUEST,
+    type: action.,
     payload: {
       code,
     },
