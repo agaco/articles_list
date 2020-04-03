@@ -6,7 +6,7 @@ import store from 'store/store.js';
 import { history } from 'store/middleware';
 import './App.css';
 import { Layout } from 'antd';
-import InvoiceCreator from '../pages/InvoiceCreator';
+import ArticlesList from '../pages/ArticlesList';
 
 function App() {
   return (
@@ -14,8 +14,8 @@ function App() {
       <ConnectedRouter history={history}>
         <Layout className='generalSettings'>
           <Switch>
-            <Route exact path='/create' component={InvoiceCreator} />
-            <Route exact path='/' component={InvoiceCreator} />
+            <Route exact path='/create' component={ArticlesList} />
+            <Route exact path='/' component={ArticlesList} />
             {/*<Route path='' component={News} />*/}
           </Switch>
         </Layout>

@@ -1,30 +1,14 @@
 import styled from 'styled-components';
+import { Card as CommonCard } from 'antd';
 
-export const Container = styled.div`
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  padding: 5px;
-`;
-
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+export const Title = styled.div`
   padding: 10px;
-  border: 1px solid red;
+  font-size: 15px;
+  line-height: 1.3;
 `;
 
-export const Sum = styled.div`
-  font-weight: bold;
-  text-align: center;
-  width: 100%;
-`;
-
-export const Label = styled.span`
-  font-weight: bold;
-  text-align: center;
+export const Card = styled(CommonCard)`
+  height: 100%;
 `;
 
 export const Image = styled.div`
@@ -32,5 +16,6 @@ export const Image = styled.div`
   width: 100%;
   background: url(${(props)=>props.src}) center center;
   background-size: cover;
+  background-position: top center;
 `;
 

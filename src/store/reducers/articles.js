@@ -1,4 +1,4 @@
-import news from '../actions/reduxActions/news';
+import * as actionCase from '../actions/reduxActions';
 
 const initialState = {
   list: [],
@@ -6,7 +6,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-  case 'GET_ARTICLES_LIST':
+  case actionCase.worker.GET_ARTICLES_LIST:
     return {
       ...state,
       list: action.payload,

@@ -1,28 +1,26 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
-import { Card, Col } from 'antd';
-import { Container, Wrapper, Sum, Image } from './styled';
+import { Col } from 'antd';
+import { Card, Image, Title } from './styled';
 
-const { Meta } = Card;
+const placeholder = 'https://via.placeholder.com/300';
 
 const Article = ({
   title,
   img,
-  body,
 }) => {
   return (
     <Col span={8} style={{margin: '10px'}}>
       <Card hoverable
         cover={
-          <Image alt={img.title}
-            src={img.url}
+          <Image alt={img ? img.title : ''}
+            src={img ? img.url : placeholder}
           />
         }
       >
-        <Meta
-          title={title}
-          // description={body.data}
-        />
+        <Title>
+          {title}
+        </Title>
       </Card>
     </Col>
   );
@@ -31,8 +29,6 @@ const Article = ({
 Article.propTypes = {
   title: PropTypes.string,
   img: PropTypes.object,
-  body: PropTypes.object,
-  // onChange: PropTypes.func,
 };
 
 
