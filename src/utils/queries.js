@@ -1,8 +1,8 @@
-export const fullListQuery = () => (
-  `{
-   articles(t: Article, limit: 20) {
+export const fullListQuery = `{
+   articles(t: Article, limit: 20, service: Tech) {
      id
      original_id
+     url
      title
      tags
      img {
@@ -22,8 +22,7 @@ export const fullListQuery = () => (
        }
      }
    }
- }`
-);
+ }`;
 
 
 export const singleArtQuery = `query getArticle($url: String!) {
@@ -43,6 +42,11 @@ export const singleArtQuery = `query getArticle($url: String!) {
      }
      body(t: HTML) {
        data
+       params {
+         id
+         type
+         description
+       }
      }
   }
  }`;

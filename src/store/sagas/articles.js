@@ -13,7 +13,7 @@ const urlGen = (val, id) => {
 function* setArticlesList({ payload }) {
 
   const withUrl = yield payload.map(item => {
-    item.url = urlGen(item.title, item.original_id);
+    item.friendly_url = urlGen(item.title, item.original_id);
     return item;
   });
 
@@ -22,20 +22,6 @@ function* setArticlesList({ payload }) {
   // const tags = yield payload.reduce((acc, item) => {
   //
   // }, []);
-
-  // const referenceData = yield select((state) => selector.config.getConfigReferenceData(state));
-  // const personalInfo = yield select((state) => selector.auth.getPersonalData(state));
-  // const ifUserHasBigCategoryId = yield personalInfo.categories.filter(i => i.level == 0);
-  // const ifUserHasSmallCategoryId = yield personalInfo.categories.filter(i => i.level == 1);
-  //
-  // const allBigCategoriesOfUser = yield ifUserHasBigCategoryId.length > 0
-  //   ? ifUserHasBigCategoryId.map(i => i.id)
-  //   : [];
-  //
-
-  // yield put(setBuildingBlockFilter(data));
-  // yield put(setCurrentPlanFilter(data));
-  // yield put(setUploadPlanParams(uploadData));
 
 }
 

@@ -9,7 +9,7 @@ import { Spin } from 'antd';
 import * as q from '../../../utils/queries';
 import * as actionCreator from '../../../store/actions/creators';
 
-const GET_ARTICLES_LIST = gql`${q.fullListQuery()}`;
+const GET_ARTICLES_LIST = gql`${q.fullListQuery}`;
 
 function ArticlesList() {
   const history = useHistory();
@@ -21,9 +21,6 @@ function ArticlesList() {
   useEffect(() => {
     data && actionCreator.saga.getArticlesSaga(dispatch, data.articles);
   }, [data]);
-
-
-  console.log('ARTICLE', articles);
 
   const onClick = (val) => {
     history.push(`/article/${val}`);
@@ -39,7 +36,7 @@ function ArticlesList() {
           !loading && articles && articles.map(item => {
             return (
               <Article key={item.id}
-                onClick={() => onClick(item.url)}
+                onClick={() => onClick(item.friendly_url)}
                 {...item}/>
             );
           })
