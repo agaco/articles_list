@@ -4,6 +4,6 @@ import * as actions from '../actions/sagaActions';
 
 export default function * () {
   yield takeEvery(
-    actions.listener.GET_SOURCES_REQUEST,
+    actions.listener.GET_SOURCES_LIST,
     articlesSaga.setArticlesList);
 }

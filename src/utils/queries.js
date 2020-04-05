@@ -4,7 +4,6 @@ export const fullListQuery = () => (
      id
      original_id
      title
-     url
      tags
      img {
        url

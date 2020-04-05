@@ -7,19 +7,28 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { Spin } from 'antd';
 import * as q from '../../../utils/queries';
+import * as actionCreator from '../../../store/actions/creators';
 
 const GET_ARTICLES_LIST = gql`${q.fullListQuery()}`;
 
 function ArticlesList() {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const articles = useSelector(state => state.articles.list);
   const { data, loading, error } = useQuery(GET_ARTICLES_LIST);
+
+
+  useEffect(() => {
+    data && actionCreator.saga.getArticlesSaga(dispatch, data.articles);
+  }, [data]);
+
+
+  console.log('ARTICLE', articles);
 
   const onClick = (val) => {
     history.push(`/article/${val}`);
   };
 
-  console.log('DATA', data);
-  console.log('loading', loading);
   if (error) return <p>Error</p>;
   return (
     <Spin spinning={loading} size='small'>
@@ -27,10 +36,10 @@ function ArticlesList() {
         justify='center'
       >
         {
-          !loading && data && data.articles.map(item => {
+          !loading && articles && articles.map(item => {
             return (
               <Article key={item.id}
-                onClick={() => onClick(item.original_id)}
+                onClick={() => onClick(item.url)}
                 {...item}/>
             );
           })

@@ -9,6 +9,6 @@ const getArticlesList = (payload) => {
 
 
 
-export {
+export default {
   getArticlesList,
 };

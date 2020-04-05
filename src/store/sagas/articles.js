@@ -1,15 +1,27 @@
 
-// import { put, select } from 'redux-saga/effects';
+import { put, select } from 'redux-saga/effects';
 // import * as selector from 'store/selectors';
-// import {
-//   setBuildingBlockFilter,
-//   setCurrentPlanFilter,
-//   setUploadPlanParams,
-// } from 'store/actions/creators/redux';
+import * as actionCreator from '../actions/creators';
+import latinize from 'latinize';
 
+const urlGen = (val, id) => {
+  const res = val.replace(/[&\\#,+()$~%.'":*?<>{}]/gi, '').replace(/\s/gi, '-');
+  return `${latinize(res.toLowerCase())}-id-${id}`;
 
-function* setArticlesList() {
-  yield console.log('dddddd');
+};
+
+function* setArticlesList({ payload }) {
+
+  const withUrl = yield payload.map(item => {
+    item.url = urlGen(item.title, item.original_id);
+    return item;
+  });
+
+  yield put(actionCreator.redux.getArticlesList(withUrl));
+
+  // const tags = yield payload.reduce((acc, item) => {
+  //
+  // }, []);
 
   // const referenceData = yield select((state) => selector.config.getConfigReferenceData(state));
   // const personalInfo = yield select((state) => selector.auth.getPersonalData(state));
