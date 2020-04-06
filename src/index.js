@@ -2,7 +2,7 @@ import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as serviceWorker from './serviceWorker';
+import * as customServiceWorker from './service-worker';
 import './index.css';
 import App from './app/App';
 import { ApolloClient } from 'apollo-client';
@@ -28,4 +28,4 @@ ReactDOM.render(<ApolloProvider client={client}><App /></ApolloProvider>, docume
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 
-serviceWorker.unregister();
+customServiceWorker.start();

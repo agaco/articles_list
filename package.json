@@ -1,5 +1,5 @@
 {
-  "name": "Articles List",
+  "name": "ArticlesList",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
