@@ -4,13 +4,14 @@ import { Col } from 'antd';
 import { Card, Image, Title } from './styled';
 
 const placeholder = 'https://via.placeholder.com/300';
+
 const Article = ({
   title,
   img,
   onClick,
 }) => {
   return (
-    <Col span={8} style={{margin: '10px'}}>
+    <Col span={12}>
       <Card hoverable
         onClick={onClick}
         cover={

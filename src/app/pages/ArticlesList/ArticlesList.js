@@ -29,7 +29,8 @@ function ArticlesList() {
   if (error) return <p>Error</p>;
   return (
     <Spin spinning={loading} size='small'>
-      <Row type='flex'
+      <Row gutter={[24, 24]}
+        type='flex'
         justify='center'
       >
         {

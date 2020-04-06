@@ -46,12 +46,10 @@ function SingleArticle() {
 
   return (
     <Spin spinning={articleLoading || articlesListLoading} size='small'>
-      <Row type='flex'
-        justify='center'
-      >
+      <Row gutter={[24, 24]}>
         {
           data && (
-            <Col span={12} style={{margin: '10px'}}>
+            <Col span={24} style={{margin: '10px'}}>
               <Article>
                 <h1> { data.article.title } </h1>
                 <Tags onClick={tagOnCLick} data={data.article.tags}/>

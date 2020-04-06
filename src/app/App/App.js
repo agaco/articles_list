@@ -8,11 +8,13 @@ import './App.css';
 import { Layout } from 'antd';
 import ArticlesList from '../pages/ArticlesList';
 import SingleArticle from '../pages/SingleArticle';
+import Header from '../components/Header';
 
 function App() {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
+        <Header/>
         <Layout className='generalSettings'>
           <Switch>
             <Route exact path='/' component={ArticlesList} />

@@ -1,5 +1,7 @@
 @import '~antd/dist/antd.css';
-
+body {
+  background: #f0f2f5
+}
 .App {
   text-align: center;
 }
@@ -22,5 +24,6 @@
 .generalSettings {
   margin: 0 auto;
   width: 100%;
+  max-width: 900px;
   min-height: 100vh;
 }
