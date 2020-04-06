@@ -1,5 +1,5 @@
 
-import { put, select } from 'redux-saga/effects';
+import { put } from 'redux-saga/effects';
 // import * as selector from 'store/selectors';
 import * as actionCreator from '../actions/creators';
 import latinize from 'latinize';

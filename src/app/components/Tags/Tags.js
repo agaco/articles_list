@@ -1,34 +1,34 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
-import { Col, Tag } from 'antd';
-import { Card, Image, Title } from './styled';
+import { Tag } from 'antd';
+import { Wrapper} from './styled';
 
 const Tags = ({
-  title,
-  img,
   onClick,
+  data,
 }) => {
+
   return (
-    <Col span={8} style={{margin: '10px'}}>
-      <Card hoverable
-        onClick={onClick}
-        cover={
-          <Image alt={img ? img.title : ''}
-            src={img ? img.url : placeholder}
-          />
-        }
-      >
-        <Title>
-          {title}
-        </Title>
-      </Card>
-    </Col>
+    <Wrapper>
+      {
+        Array.isArray(data) && data.map((item, index) => {
+          const name = item.toLowerCase();
+          return (
+            <Tag key={index}
+              color='cyan'
+              onClick={() => onClick.call(this, item)}
+            >
+              { name }
+            </Tag>
+          );
+        })
+      }
+    </Wrapper>
   );
 };
 
 Tags.propTypes = {
-  title: PropTypes.string,
-  img: PropTypes.object,
+  data: PropTypes.array,
   onClick: PropTypes.func,
 };
 

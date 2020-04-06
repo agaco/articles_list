@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col, Tag, Spin } from 'antd';
+import { Row, Col, Spin, Divider } from 'antd';
 import { useQuery } from '@apollo/react-hooks';
 import { useParams } from 'react-router-dom';
 import Image from 'components/Image';
+import Tags from 'components/Tags';
 import { Article, Section } from './styled';
 
 import gql from 'graphql-tag';
@@ -35,7 +36,9 @@ function SingleArticle() {
     variables: { url: singleArticle.url},
   });
 
-  console.log('article', data);
+  const tagOnCLick = (item) => {
+    console.log('click', item);
+  };
 
 
   if (!data && articleLoading || articlesListLoading) return <Spin spinning={articleLoading || articlesListLoading} size='small'/>;
@@ -51,19 +54,15 @@ function SingleArticle() {
             <Col span={12} style={{margin: '10px'}}>
               <Article>
                 <h1> { data.article.title } </h1>
-                {
-                  data.article.tags.map((item, index) => (
-                    <Tag key={index}>
-                      { item }
-                    </Tag>
-                  ))
-                }
+                <Tags onClick={tagOnCLick} data={data.article.tags}/>
                 <Image url={data.article.img.url} title={data.article.img.title}/>
+                <Divider/>
                 <Section>
                   {
-                    data.article.body.map(item => {
+                    data.article.body.map((item, index) => {
+                      const id = `${data.article.id}-${index}`;
                       return (
-                        <div key={data.article.id} dangerouslySetInnerHTML={{__html: item.data}} />
+                        <div key={id} dangerouslySetInnerHTML={{__html: item.data}} />
                       );
                     })
                   }
