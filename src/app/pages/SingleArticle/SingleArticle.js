@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col, Tag } from 'antd';
+import { Row, Col, Tag, Spin } from 'antd';
 import { useQuery } from '@apollo/react-hooks';
 import { useParams } from 'react-router-dom';
+import Image from 'components/Image';
+import { Article, Section } from './styled';
+
 import gql from 'graphql-tag';
-import { Spin } from 'antd';
 import * as q from '../../../utils/queries';
 import * as actionCreator from '../../../store/actions/creators';
 
@@ -28,7 +30,7 @@ function SingleArticle() {
 
   const singleArticle = articles.length > 0 && articles.find(i => i.original_id == articlesOriginalId);
 
-  const { data, loading: articleLoading, error: errorLoading } = useQuery(GET_ARTICLE_DATA, {
+  const { data, loading: articleLoading, error: articleError } = useQuery(GET_ARTICLE_DATA, {
     skip: !singleArticle.url,
     variables: { url: singleArticle.url},
   });
@@ -37,6 +39,7 @@ function SingleArticle() {
 
 
   if (!data && articleLoading || articlesListLoading) return <Spin spinning={articleLoading || articlesListLoading} size='small'/>;
+  if (!data && articleError || articlesListError) return <div>There are some errors</div>;
 
   return (
     <Spin spinning={articleLoading || articlesListLoading} size='small'>
@@ -45,9 +48,9 @@ function SingleArticle() {
       >
         {
           data && (
-            <Col span={8} style={{margin: '10px'}}>
-              <h1> { data.article.title } </h1>
-              <div>
+            <Col span={12} style={{margin: '10px'}}>
+              <Article>
+                <h1> { data.article.title } </h1>
                 {
                   data.article.tags.map((item, index) => (
                     <Tag key={index}>
@@ -55,7 +58,17 @@ function SingleArticle() {
                     </Tag>
                   ))
                 }
-              </div>
+                <Image url={data.article.img.url} title={data.article.img.title}/>
+                <Section>
+                  {
+                    data.article.body.map(item => {
+                      return (
+                        <div key={data.article.id} dangerouslySetInnerHTML={{__html: item.data}} />
+                      );
+                    })
+                  }
+                </Section>
+              </Article>
             </Col>
           )
         }

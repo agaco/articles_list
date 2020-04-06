@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const Article = styled.article`
   margin-bottom: 1em;
-  background: #09d3ac;
+`;
+
+const Section = styled.section`
+  margin: 15px 0;
 `;
 
 export {
-  Wrapper,
+  Article,
+  Section,
 };
