@@ -14,7 +14,10 @@ function Header() {
         <Wrapper>
           <HeaderContainer>
             {
-              location.pathname !== '/' && <Return onClick={() => history.goBack()}>return</Return>
+              location.pathname !== '/' && <Return onClick={() => history.goBack()}>Wróć</Return>
+            }
+            {
+              location.pathname !== '/' && <Return onClick={() => history.push('/')}>Główna</Return>
             }
           </HeaderContainer>
         </Wrapper>

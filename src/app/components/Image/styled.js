@@ -6,9 +6,9 @@ export const Title = styled.div`
 `;
 
 export const Img = styled.div`
-  height:${props => props.height ? props.height : '300px'};  
-  width:${props => props.width ? props.width : '100%'};
-  background: url(${(props)=>props.src}) center center;
+  height: ${props => props.height ? props.height : '300px'};  
+  width: ${props => props.width ? props.width : '100%'};
+  background: url(${(props) => props.src}) center center;
   background-size: cover;
   background-position: top center;
 `;
