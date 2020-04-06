@@ -7,6 +7,14 @@ const getArticlesSaga = (dispatch, payload) => {
   });
 };
 
+const getRecommendations = (dispatch, payload) => {
+  return dispatch({
+    type: action.listener.GET_RECOMMENDATIONS,
+    payload,
+  });
+};
+
 export default {
   getArticlesSaga,
+  getRecommendations,
 };

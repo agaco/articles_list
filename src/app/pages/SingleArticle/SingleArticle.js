@@ -37,6 +37,10 @@ function SingleArticle() {
     variables: { url: singleArticle.url},
   });
 
+  useEffect(() => {
+    singleArticle && actionCreator.saga.getRecommendations(dispatch, singleArticle.tags);
+  }, [singleArticle]);
+
   const tagOnCLick = (item) => {
     console.log('click', item);
   };

@@ -6,4 +6,7 @@ export default function * () {
   yield takeEvery(
     actions.listener.GET_SOURCES_LIST,
     articlesSaga.setArticlesList);
+  yield takeEvery(
+    actions.listener.GET_RECOMMENDATIONS,
+    articlesSaga.getReccomendations);
 }

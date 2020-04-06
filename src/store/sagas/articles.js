@@ -1,6 +1,6 @@
 
-import { put } from 'redux-saga/effects';
-// import * as selector from 'store/selectors';
+import { put, select } from 'redux-saga/effects';
+import * as selector from '../selectors';
 import * as actionCreator from '../actions/creators';
 import latinize from 'latinize';
 
@@ -18,15 +18,25 @@ function* setArticlesList({ payload }) {
   });
 
   yield put(actionCreator.redux.getArticlesList(withUrl));
+}
 
-  // const tags = yield payload.reduce((acc, item) => {
-  //
-  // }, []);
+function* getReccomendations({ payload }) {
+
+  const articles = yield select(state => selector.getArticles(state));
+
+  const res = yield articles.filter(item => {
+    const matches = item.tags.length > 0 && item.tags.every(i => payload.includes(i));
+    if (matches) return matches;
+  });
+
+  yield put(actionCreator.redux.setRecommendations(res));
+
+
 
 }
 
-
 export {
   setArticlesList,
+  getReccomendations,
 };
 

@@ -7,8 +7,15 @@ const getArticlesList = (payload) => {
   };
 };
 
+const setRecommendations = (payload) => {
+  return {
+    type: action.worker.SET_RECOMMENDATIONS,
+    payload: payload,
+  };
+};
 
 
 export default {
   getArticlesList,
+  setRecommendations,
 };

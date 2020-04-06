@@ -1,5 +1,5 @@
 export const fullListQuery = `{
-   articles(t: Article, limit: 20, service: Tech) {
+   articles(t: Article, limit: 50, service: Tech) {
      id
      original_id
      url
