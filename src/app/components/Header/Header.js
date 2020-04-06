@@ -8,11 +8,8 @@ function Header() {
   const history = useHistory();
   const location = useLocation();
 
-
-  console.log('location', location);
-  console.log('history', history);
   return (
-    <Row gutter={[24, 24]}>
+    <Row gutter={[0, 24]}>
       <Col span={24}>
         <Wrapper>
           <HeaderContainer>
