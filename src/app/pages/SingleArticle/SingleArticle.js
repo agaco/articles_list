@@ -10,6 +10,7 @@ import { Article, Section } from './styled';
 import gql from 'graphql-tag';
 import * as q from '../../../utils/queries';
 import * as actionCreator from '../../../store/actions/creators';
+import * as selector from '../../../store/selectors';
 
 const GET_ARTICLE_DATA = gql`${q.singleArtQuery}`;
 const GET_ARTICLES_LIST = gql`${q.fullListQuery}`;
@@ -19,7 +20,7 @@ function SingleArticle() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const articlesOriginalId = id.split('-id-').pop();
-  const articles = useSelector(state => state.articles.list);
+  const articles = useSelector(state => selector.getArticles(state));
 
   const { data: articlesList, loading: articlesListLoading, error: articlesListError } = useQuery(GET_ARTICLES_LIST, {
     skip: articles.length > 0,
@@ -49,7 +50,7 @@ function SingleArticle() {
       <Row gutter={[24, 24]}>
         {
           data && (
-            <Col span={24} style={{margin: '10px'}}>
+            <Col span={24}>
               <Article>
                 <h1> { data.article.title } </h1>
                 <Tags onClick={tagOnCLick} data={data.article.tags}/>

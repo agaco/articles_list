@@ -8,8 +8,7 @@ const Section = styled.section`
   margin: 15px 0;
   
   img {
-  border: 4px solid green;
-  max-width: 100%;
+    max-width: 100%;
   }
 `;
 

@@ -8,13 +8,14 @@ import gql from 'graphql-tag';
 import { Spin } from 'antd';
 import * as q from '../../../utils/queries';
 import * as actionCreator from '../../../store/actions/creators';
+import * as selector from '../../../store/selectors';
 
 const GET_ARTICLES_LIST = gql`${q.fullListQuery}`;
 
 function ArticlesList() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const articles = useSelector(state => state.articles.list);
+  const articles = useSelector(state => selector.getArticles(state));
   const { data, loading, error } = useQuery(GET_ARTICLES_LIST);
 
 

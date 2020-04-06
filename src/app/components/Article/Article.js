@@ -11,7 +11,7 @@ const Article = ({
   onClick,
 }) => {
   return (
-    <Col span={12}>
+    <Col xs={24} sm={12}>
       <Card hoverable
         onClick={onClick}
         cover={

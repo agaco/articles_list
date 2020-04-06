@@ -1,1 +1,1 @@
-export const getCurrentExpandedRow = (state) => state.currentPlan.row;
+export const getArticles = (state) => state.articles.list;
