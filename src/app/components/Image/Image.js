@@ -6,7 +6,7 @@ const placeholder = 'https://via.placeholder.com/300';
 const Image = ({
   title,
   url,
-  props,
+  ...props
 }) => {
   return (
     <Fragment>

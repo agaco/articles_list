@@ -31,8 +31,6 @@ function* getReccomendations({ payload }) {
 
   yield put(actionCreator.redux.setRecommendations(res));
 
-
-
 }
 
 export {

@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { useParams } from 'react-router-dom';
 import Image from 'components/Image';
 import Tags from 'components/Tags';
+import Recommendations from 'components/Recommendations';
 import { Article, Section } from './styled';
 
 import gql from 'graphql-tag';
@@ -21,6 +22,7 @@ function SingleArticle() {
   const { id } = useParams();
   const articlesOriginalId = id.split('-id-').pop();
   const articles = useSelector(state => selector.getArticles(state));
+  const recommendations = useSelector(state => selector.getRecommendations(state));
 
   const { data: articlesList, loading: articlesListLoading, error: articlesListError } = useQuery(GET_ARTICLES_LIST, {
     skip: articles.length > 0,
@@ -70,6 +72,9 @@ function SingleArticle() {
                     })
                   }
                 </Section>
+                {
+                  recommendations.length > 0 && <Recommendations data={recommendations}/>
+                }
               </Article>
             </Col>
           )

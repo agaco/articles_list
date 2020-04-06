@@ -47,4 +47,5 @@ function ArticlesList() {
     </Spin>
   );
 }
+
 export default ArticlesList;
